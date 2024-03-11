@@ -87,7 +87,7 @@ function setDeck(){
                     "card": `<div id="${i}${cTI[j]}" class="card" draggable="true" style="background-image:url('./pics/${rTC[i]}-0${cTI[j]}.svg')" color="${rTC[i]}" number="${cTI[j]}"></div>`,
                     "color": rTC[i],
                     "number": `${cTI[j]}`,
-                    "style":`background-image:url('/pics/${rTC[i]}-0${cTI[j]}.svg')`
+                    "style":`background-image:url('./pics/${rTC[i]}-0${cTI[j]}.svg')`
                     
                 });
             } else {
@@ -96,7 +96,7 @@ function setDeck(){
                     "card": `<div id="${i}${cTI[j]}" class="card" draggable="true" style="background-image:url('./pics/${rTC[i]}-0${cTI[j]}.svg')" color="${rTC[i]}" number="${cTI[j]}"></div>`,
                     "color": rTC[i],
                     "number": `${cTI[j]}`,
-                    "style":`background-image:url('/pics/${rTC[i]}-0${cTI[j]}.svg')`
+                    "style":`background-image:url('./pics/${rTC[i]}-0${cTI[j]}.svg')`
                 });
             }
         }
@@ -106,14 +106,14 @@ function setDeck(){
         "card": `<div id="0" class="card" draggable="true" style="background-image:url('./pics/0-0.svg')" color="0" number="0"></div>`,
         "color": 0,
         "number": `0`,
-        "style":`background-image:url('/pics/0-0.svg')`
+        "style":`background-image:url('./pics/0-0.svg')`
     });
     cardsArray.push({
         "id": `0`,
         "card": `<div id="0" class="card" draggable="true" style="background-image:url('./pics/0-0.svg')" color="0" number="0"></div>`,
         "color": 0,
         "number": `0`,
-        "style":`background-image:url('/pics/0-0.svg')`
+        "style":`background-image:url('./pics/0-0.svg')`
     });
 }
 
