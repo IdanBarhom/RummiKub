@@ -84,7 +84,7 @@ function setDeck(){
             if (i%2 === 1) {
                cardsArray.push({
                     "id": `${i}${cTI[j]}`,
-                    "card": `<div id="${i}${cTI[j]}" class="card" draggable="true" style="background-image:url('/pics/${rTC[i]}-0${cTI[j]}.svg')" color="${rTC[i]}" number="${cTI[j]}"></div>`,
+                    "card": `<div id="${i}${cTI[j]}" class="card" draggable="true" style="background-image:url('./pics/${rTC[i]}-0${cTI[j]}.svg')" color="${rTC[i]}" number="${cTI[j]}"></div>`,
                     "color": rTC[i],
                     "number": `${cTI[j]}`,
                     "style":`background-image:url('/pics/${rTC[i]}-0${cTI[j]}.svg')`
@@ -93,7 +93,7 @@ function setDeck(){
             } else {
                 cardsArray.push({
                     "id": `${i}${cTI[j]}`,
-                    "card": `<div id="${i}${cTI[j]}" class="card" draggable="true" style="background-image:url('/pics/${rTC[i]}-0${cTI[j]}.svg')" color="${rTC[i]}" number="${cTI[j]}"></div>`,
+                    "card": `<div id="${i}${cTI[j]}" class="card" draggable="true" style="background-image:url('./pics/${rTC[i]}-0${cTI[j]}.svg')" color="${rTC[i]}" number="${cTI[j]}"></div>`,
                     "color": rTC[i],
                     "number": `${cTI[j]}`,
                     "style":`background-image:url('/pics/${rTC[i]}-0${cTI[j]}.svg')`
@@ -103,14 +103,14 @@ function setDeck(){
     }
     cardsArray.push({
         "id": `0`,
-        "card": `<div id="0" class="card" draggable="true" style="background-image:url('/pics/0-0.svg')" color="0" number="0"></div>`,
+        "card": `<div id="0" class="card" draggable="true" style="background-image:url('./pics/0-0.svg')" color="0" number="0"></div>`,
         "color": 0,
         "number": `0`,
         "style":`background-image:url('/pics/0-0.svg')`
     });
     cardsArray.push({
         "id": `0`,
-        "card": `<div id="0" class="card" draggable="true" style="background-image:url('/pics/0-0.svg')" color="0" number="0"></div>`,
+        "card": `<div id="0" class="card" draggable="true" style="background-image:url('./pics/0-0.svg')" color="0" number="0"></div>`,
         "color": 0,
         "number": `0`,
         "style":`background-image:url('/pics/0-0.svg')`
