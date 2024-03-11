@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    
+        <div id="main" class="main">
+            <p id="message"></p>
+            <!-- <input type="text" id="playerName" placeholder="Name of player" ><br> -->
+            <p>Number Of Players:</p><br>
+            <div class="players" >
+                <input type="radio"  name="num_of_players" value="2" class="num_of_players">
+                <label for="amount1" class="radio-label">2</label>
+                <input type="radio"  name="num_of_players" value="3" class="num_of_players" >
+                <label for="amount2" class="radio-label">3</label>
+                <input type="radio"  name="num_of_players" value="4" class="num_of_players" >
+                <label for="amount3" class="radio-label">4</label>
+            </div>
+            
+            <button class="startbtn" onclick="verify()">Start</button>
+        </div>
+        
+
+        <div id="game" class="game">
+        
+            <div id="player-0" class="board"></div>
+            <!-- <span id="card" class="card" draggable><img src="/pics/1-02.svg" alt=""></span> -->
+            
+            <div id="table">
+                <div id="floor" class="board">
+                
+
+                </div>
+
+            </div>
+            
+            <button class="exit" onclick="exit()">exit</button>
+            
+            <div id="buttons">
+                <button id="draw"  onclick="draw()">➕</button>
+                <div id="sort-deck">
+                    <button id="s777" class="777" onclick="sort777()">777</button>
+                    <button id="s789" class="789" onclick="sort789()">789</button>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

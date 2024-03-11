@@ -1,0 +1,364 @@
+body{
+    height:100%;
+    width: 100%;
+    margin: 0;
+    background-color: blanchedalmond;
+}
+
+#main{
+    background-color: aqua;
+    height:200px;
+    width: 300px;
+    display:flex;
+    flex-direction: column;
+    visibility: visible;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 25%;
+    left:40%
+}
+.radio-label {
+
+    display: inline-block;
+    justify-content: center
+  }
+
+  #game {
+    border: 1px solid black;
+    height: 800px;
+    width: 1350px;
+    position: absolute;
+    visibility: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+  }
+  #player-0 {
+   bottom: 0;
+   left: 30%;
+   position: absolute;
+   display: flex;
+    flex-wrap: wrap;
+    height: 159px;
+    width: 522px;
+    gap: 2px;
+    background-color: burlywood;
+
+  }
+
+   #player-1
+  {
+    position: absolute;
+    top: 0;
+    left: 30%;
+    rotate: 180deg;
+    display: flex;
+    flex-wrap: wrap;
+    height: 159px;
+    width: 522px;
+    gap: 2px;
+    background-color: burlywood;
+    
+  }
+  #player-2{
+    position: absolute;
+    left: -12.8%;
+    top:40%;
+    
+    rotate: 90deg;
+    display: flex;
+    flex-wrap: wrap;
+    height: 159px;
+    width: 522px;
+    gap: 2px;
+    background-color: burlywood;
+  }
+  #player-3{
+    display: flex;
+    flex-wrap: wrap;
+    height: 159px;
+    width: 522px;
+    gap: 2px;
+    background-color: burlywood;
+    position: absolute;
+
+    right: -12.8%;
+    top:40%;
+    rotate: 270deg;
+  } 
+   
+  
+  /* #cards{
+    flex-wrap: wrap;
+    
+  } */
+ 
+  .card{
+    height: 75px;
+    width: 58px;
+    z-index: 2;
+    border-radius: 7px;
+     display: flex;
+    flex-direction: row; 
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("/pics/0.svg");
+    border-color: black;
+    border-style: solid;
+
+  }
+
+   #draw
+  {
+    font-family:cursive;
+    background-position: center;
+    font-size: large;
+    color: black;
+    background-size: cover;
+   background-image: url("/pics/0.svg");
+   position: relative;
+   height: 75px;
+    width: 58px;
+  }
+
+  #s777{
+    font-family:cursive;
+    font-size: x-large;
+    color:#1F618D ;
+    background-size: cover;
+    background-image: url("/pics/0.svg");
+
+    position: relative;
+    height: 75px;
+     width: 58px;
+  }
+  #s789{
+    font-family:cursive;
+    font-size: x-large;
+    color:#1F618D ;
+    background-size: cover;
+    background-image: url("/pics/0.svg");
+    position: relative;
+    height: 75px;
+     width: 58px;
+  }
+  
+  .exit{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  /* .board{
+    
+  } */
+  /* .board2{
+    
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px ;
+    height: 200px;
+    gap: 2px;
+    background-color: burlywood;
+    
+  } */
+
+  #message{
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+  }
+
+#buttons{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+
+#table
+{
+  width: 818px;
+  height: 480px;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border: 1px solid black;
+}
+#floor
+{
+  /* display: flex;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px 58px;
+  grid-template-rows: 80px 80px 80px 80px 80px 80px;
+  
+    border: 1px solid black;
+    
+}
+
+.dragging{
+  opacity: 0.5;
+}
+
+
+.empty{
+  border: solid 1px;
+  height: 76px;
+  width: 59px;
+  border-radius: 7px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+  body{
+    height:100%;
+    width: 100%;
+    margin: 0;
+    background-color: blanchedalmond;
+}
+#container{
+    height:600px;
+    width: 800px;
+    position: relative;
+    align-content: center;
+    
+}
+#main{
+    background-color: aqua;
+    height:200px;
+    width: 300px;
+    display:flex;
+    flex-direction: column;
+    visibility: visible;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 25%;
+    left:40%
+}
+.radio-label {
+
+    display: inline-block;
+    justify-content: center
+  }
+
+  #game {
+    height: 800px;
+    width: 1000px;
+    position: absolute;
+    visibility: hidden;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr;
+    gap: 3rem;
+    left: 20%;
+    top: 20px;
+  }
+  #player-0 {
+    grid-area:3/2 ;
+    
+  }
+   #player-1
+  {
+    order: 1;
+    rotate: 180deg;
+  }
+  #player-2{
+    grid-area:2/1 ;
+    order: 2;
+    /* rotate: 90deg; 
+  }
+  #player-3{
+    grid-area:2/3 ;
+  } 
+  #exit-button
+  {
+    order: 0;
+  }
+  #table{
+    grid-area:2/2 ;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+     #player-1,
+  #player-2,
+  #player-3,
+  #player-0 {
+    background-color: burlywood;
+  } 
+  
+  #card{
+    cursor:grab;
+    user-select: none;
+    min-height: 40px;
+    height: 8.5vh;
+    background-color: burlywood;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    
+    border-color: black;
+    border-style: solid;
+
+  }
+
+  #buttons{
+    grid-area:3/3 ;
+  }
+   #draw
+  {
+    position: fixed;
+    top: 80%;
+    left: 70%;
+  }
+  #sort-deck{
+    position: fixed;
+    top: 88%;
+    left: 70%;
+  } 
+
+   .board{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    background-color: burlywood;
+    border-radius: 5px;
+  } 
+
+  #message{
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+  }
+
+
+   */
+
+  
