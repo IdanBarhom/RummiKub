@@ -105,7 +105,7 @@ body{
     
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("/pics/0.svg");
+    background-image: url("/pics/0-0.svg");
     border-color: black;
     border-style: solid;
 
@@ -118,18 +118,39 @@ body{
     font-size: large;
     color: black;
     background-size: cover;
-   background-image: url("/pics/0.svg");
+   background-image: url("/pics/0-0.svg");
    position: relative;
    height: 75px;
     width: 58px;
   }
-
+  #done{
+    font-family:cursive;
+    background-position: center;
+    font-size: large;
+    color: black;
+    background-size: cover;
+   background-image: url("/pics/0-0.svg");
+   position: relative;
+   height: 75px;
+    width: 58px;
+  }
+  #reset{
+    font-family:cursive;
+    background-position: center;
+    font-size: large;
+    color: black;
+    background-size: cover;
+   background-image: url("/pics/0-0.svg");
+   position: relative;
+   height: 75px;
+    width: 58px;
+  }
   #s777{
     font-family:cursive;
     font-size: x-large;
     color:#1F618D ;
     background-size: cover;
-    background-image: url("/pics/0.svg");
+    background-image: url("/pics/0-0.svg");
 
     position: relative;
     height: 75px;
@@ -140,7 +161,7 @@ body{
     font-size: x-large;
     color:#1F618D ;
     background-size: cover;
-    background-image: url("/pics/0.svg");
+    background-image: url("/pics/0-0.svg");
     position: relative;
     height: 75px;
      width: 58px;
