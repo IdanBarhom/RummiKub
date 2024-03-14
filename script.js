@@ -96,7 +96,7 @@ function setDeck(){
                cardsArray.push({
                     "id": `${i}${cTI[j]}`,
                     "card": `<div id="${i}${cTI[j]}" class="card" draggable="true" style="background-image:url('./pics/${rTC[i]}-0${cTI[j]}.svg')" color="${rTC[i]}" number="${cTI[j]}"></div>`,
-                    "color": rTC[i],
+                    "color":`${rTC[i]}`,
                     "number": `${cTI[j]}`,
                     "style":`background-image:url('./pics/${rTC[i]}-0${cTI[j]}.svg')`
                     
@@ -105,7 +105,7 @@ function setDeck(){
                 cardsArray.push({
                     "id": `${i}${cTI[j]}`,
                     "card": `<div id="${i}${cTI[j]}" class="card" draggable="true" style="background-image:url('./pics/${rTC[i]}-0${cTI[j]}.svg')" color="${rTC[i]}" number="${cTI[j]}"></div>`,
-                    "color": rTC[i],
+                    "color":`${rTC[i]}`,
                     "number": `${cTI[j]}`,
                     "style":`background-image:url('./pics/${rTC[i]}-0${cTI[j]}.svg')`
                 });
@@ -115,14 +115,14 @@ function setDeck(){
     cardsArray.push({
         "id": `0`,
         "card": `<div id="0" class="card" draggable="true" style="background-image:url('./pics/0-0.svg')" color="0" number="0"></div>`,
-        "color": 0,
+        "color": `0`,
         "number": `0`,
         "style":`background-image:url('./pics/0-0.svg')`
     });
     cardsArray.push({
         "id": `0`,
         "card": `<div id="0" class="card" draggable="true" style="background-image:url('./pics/0-0.svg')" color="0" number="0"></div>`,
-        "color": 0,
+        "color": `0`,
         "number": `0`,
         "style":`background-image:url('./pics/0-0.svg')`
     });
@@ -264,17 +264,24 @@ var screenShot={
     //"computerHand":[],//cards in array (stirngs)
     "playerHand":[],//cards in array (stirngs)
     "floor":[],//cards in array (stirngs)
-    
 }
 
 //deep copy each array from screenShot
-var deepClone=(target,arr)=>{
-    target=[];
+var deepClone=(arr)=>{
+    handPlayer0=[];
     console.log(arr.length);
     for(let i=0;i<arr.length;i++){
-        target.push({...arr[i]});
+        handPlayer0.push(arr[i]);
         //console.log(target[i]);
-        
+    }
+    console.log("deepClone");
+}
+var deepClone2=(arr)=>{
+    screenShot.playerHand=[];
+    console.log(arr.length);
+    for(let i=0;i<arr.length;i++){
+        screenShot.playerHand.push(arr[i]);
+        //console.log(target[i]);
     }
     console.log("deepClone");
 }
@@ -291,7 +298,7 @@ const deepCloneFloor=(newArray,arr)=>{
 }
    
 const snap=()=>{
-    deepClone(screenShot.playerHand,handPlayer0);
+    deepClone2(handPlayer0);
     deepCloneFloor(screenShot.floor,tableArray);
     //deepClone(screenShot.remainDeck,remainDeck);
 }
@@ -358,7 +365,7 @@ function verifyTurn()
 }
 
 function reset(){
-    deepClone(handPlayer0,screenShot.playerHand);
+    deepClone(screenShot.playerHand);
     deepCloneFloor(tableArray,screenShot.floor);
     updateHand(handPlayer0);
     updatefloor(tableArray);
@@ -379,7 +386,6 @@ function enableDraw(){
     drawButton.disabled=false;
     resetButton.disabled=true;
 }
-
 //////////////////////////TEST TWO//////////////////////////////
 
 //fill Listeners
@@ -391,9 +397,12 @@ function enableDraw(){
 //     //console.log(tile.style);
 //     target.color= tile.color;
 //     target.number=tile.number;
-
 // }
+var fill;
+var empties;
+var temp;
 function turn(){
+  
     //console.log(flag);
     if(flag===0){
         flag=1;
@@ -406,16 +415,16 @@ function turn(){
     $(function(){
         $( "#floor" ).sortable(
             {
-                cancel: ".ui-state-disabled"   
+                cancel: ".empty"   
         });
     })
 
 
-    const fill = document.querySelectorAll('.card');
-    const empties=document.querySelectorAll('.empty');
-    var temp;
+    fill = document.querySelectorAll('.card');
+    empties=document.querySelectorAll('.empty');
     
-    for(const empty of empties){
+    
+    for(var empty of empties){
         //console.log("empty!");
         empty.addEventListener('dragover',dragOver);
         empty.addEventListener('dragenter',dragEnter);
@@ -433,51 +442,50 @@ function turn(){
 
     });
     //Drag Function
+}
+function dragStart(e){
+    console.log(this);
+    temp=this;
 
-    function dragStart(e){
-        
-        
-        //console.log(this);
-        temp=this;
-        //this.className += 'hold';
-        //setTimeout(()=>(this.className ='invisible'),0)
-    }
-    function dragEnd(){
-        //this.className= 'card';
-        //setTimeout(()=>(this.className ='visible'),0)
-        
-
-    }
-   function dragOver(e)
-   {
-    e.preventDefault();
-   }
-   function dragEnter()
-   {
-   } 
-   function dragLeave()
-   {
-   } 
-   function dragDrop(e)
-   {
-    
-    const target=e.target;
-    const newDiv = document.createElement('div');
+    //this.className += 'hold';
+    //setTimeout(()=>(this.className ='invisible'),0)
+}
+function dragEnd(){
+    //this.className= 'card';
+    //setTimeout(()=>(this.className ='visible'),0)
+}
+function dragOver(e)
+{
+e.preventDefault();
+}
+function dragEnter()
+{
+console.log("enter");
+} 
+function dragLeave()
+{
+} 
+function dragDrop(e)
+{
+ console.log(e.target);
+    var target=e.target;
+    var newDiv = document.createElement('div');
     var tempcard=handPlayer0.find(item=>item.id===temp.id);
     console.log(screenShot.playerHand);
     handPlayer0=handPlayer0.filter(item=>item.id!==temp.id);
+
     newDiv.id = temp.id; 
     newDiv.className = temp.className;
     newDiv.style=tempcard.style;
-    //console.log(tempcard.style);
-    newDiv.color= tempcard.color;
-    newDiv.number=tempcard.number;
+    console.log(tempcard.style);
+    newDiv.setAttribute("color",`${tempcard.color}`);
+    newDiv.setAttribute("number",`${String(tempcard.number)}`);
     target.replaceWith(newDiv);
     disableDraw();
     updateHand(handPlayer0);
-   }
-   
 }
+
+
 function done(){
     verifyTurn();
 
