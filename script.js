@@ -27,8 +27,6 @@ const rTC={
     "7":4,
     "8":4,  
 }
-
-
 let deck=[];
 let handPlayer0=[];
 let handPlayer1=[];
@@ -127,7 +125,6 @@ function setDeck(){
         "style":`background-image:url('./pics/0-0.svg')`
     });
 }
-
 function Shuffle(cardsArray){
     for(i=0;i<cardsArray.length;i++)
     {
@@ -144,7 +141,6 @@ function Shuffle(cardsArray){
 
 
 }
-
 function deal_cards(numberOfPlayers,Deck){
     for(i=0;i<numberOfPlayers;i++)
     {
@@ -178,31 +174,9 @@ function deal_cards(numberOfPlayers,Deck){
     updateDeck();
     enableDraw();
 }
-function updateHand(hand){
-    // for(i=0;i<handPlayer0.length;i++)
-    // {
-    //     console.log(handPlayer0[i].card);
-    // }
-    console.log("update hand");
-    fc = document.getElementById('player-0');
-    while (fc.firstChild) {
-        fc.removeChild(fc.firstChild);
-    }
-    for(j=0;j<handPlayer0.length;j++){
 
-        var temp=$(handPlayer0[j].card)
-        $("#player-0").append(temp);
-    }
-    //updateDeck();
-    turn();
-}
-function updateDeck(){
-    $("#draw").empty();
-    let len= deck.length;
-    $("#draw").append("➕" +`<br>` +len);
-}
 
-////////////////////////////////in game//////////////////////////
+////////////////////////////////IN GAME//////////////////////////
 function draw(Deck){
     let temp
     if(deck.length==0){
@@ -219,6 +193,39 @@ function draw(Deck){
    updateDeck();
    turn();
 }
+function disableDraw(){
+    drawButton=document.getElementById('draw');
+    resetButton=document.getElementById('reset');
+    drawButton.disabled=true;
+    resetButton.disabled=false;
+
+}
+function enableDraw(){
+    drawButton=document.getElementById('draw');
+    resetButton=document.getElementById('reset');
+    drawButton.disabled=false;
+    resetButton.disabled=true;
+}
+////////////update arrays and boards functions/////////////////
+function updateDeck(){
+    $("#draw").empty();
+    let len= deck.length;
+    $("#draw").append("➕" +`<br>` +len);
+}
+function updateHand(hand){
+    console.log("update hand");
+    fc = document.getElementById('player-0');
+    while (fc.firstChild) {
+        fc.removeChild(fc.firstChild);
+    }
+    for(j=0;j<handPlayer0.length;j++){
+
+        var temp=$(handPlayer0[j].card)
+        $("#player-0").append(temp);
+    }
+    //updateDeck();
+    turn();
+}
 function updatefloor(floorArray){
     table=document.getElementById('floor')
     //console.log(floorArray[0][2].card);
@@ -234,6 +241,9 @@ function updatefloor(floorArray){
         }       
     }   
 }
+
+
+////////////////sort functions///////////////////
 function sort789()
 {
     
@@ -260,12 +270,13 @@ function sort789()
     turn();
 }
 
+
+////////////////deep copy (backup for last move)////////////////////
 var screenShot={
     //"computerHand":[],//cards in array (stirngs)
     "playerHand":[],//cards in array (stirngs)
     "floor":[],//cards in array (stirngs)
 }
-
 //deep copy each array from screenShot
 var deepClone=(arr)=>{
     handPlayer0=[];
@@ -303,6 +314,13 @@ const snap=()=>{
     //deepClone(screenShot.remainDeck,remainDeck);
 }
 
+
+//////////////////////////////verify moves//////////////////////////////////
+
+function straight(){
+    
+
+}
 function verifyTurn()
 {
     
@@ -327,6 +345,7 @@ function verifyTurn()
             i+=1;
             j=0;
         }
+        j++;
     }
     for(i=0;i<8;i++){
         for(j=0;j<13;j++){
@@ -373,31 +392,8 @@ function reset(){
     turn();
 }
 
-function disableDraw(){
-    drawButton=document.getElementById('draw');
-    resetButton=document.getElementById('reset');
-    drawButton.disabled=true;
-    resetButton.disabled=false;
-
-}
-function enableDraw(){
-    drawButton=document.getElementById('draw');
-    resetButton=document.getElementById('reset');
-    drawButton.disabled=false;
-    resetButton.disabled=true;
-}
 //////////////////////////TEST TWO//////////////////////////////
 
-//fill Listeners
-// function handleElement(target,tile,element)
-// {
-//     target.id = element.id; 
-//     target.className = element.className;
-//    target.style=tile.style;
-//     //console.log(tile.style);
-//     target.color= tile.color;
-//     target.number=tile.number;
-// }
 var fill;
 var empties;
 var temp;
@@ -407,11 +403,12 @@ function turn(){
     if(flag===0){
         flag=1;
         snap();
-        //deepClone(screenShot.playerHand,handPlayer0);
-       //deepClone(screenShot.floor,floor);
-        //deepClone(screenShot.playerHand,handplayer0);
     }
-
+    dragNdroplistner();
+    
+}
+/////////drag and drop functions////////////
+function dragNdroplistner(){
     $(function(){
         $( "#floor" ).sortable(
             {
@@ -441,10 +438,9 @@ function turn(){
         element.addEventListener('dragend',dragEnd);
 
     });
-    //Drag Function
 }
 function dragStart(e){
-    console.log(this);
+    //console.log(this);
     temp=this;
 
     //this.className += 'hold';
@@ -467,17 +463,17 @@ function dragLeave()
 } 
 function dragDrop(e)
 {
- console.log(e.target);
+ //console.log(e.target);
     var target=e.target;
     var newDiv = document.createElement('div');
     var tempcard=handPlayer0.find(item=>item.id===temp.id);
-    console.log(screenShot.playerHand);
+    //console.log(screenShot.playerHand);
     handPlayer0=handPlayer0.filter(item=>item.id!==temp.id);
 
     newDiv.id = temp.id; 
     newDiv.className = temp.className;
     newDiv.style=tempcard.style;
-    console.log(tempcard.style);
+    //console.log(tempcard.style);
     newDiv.setAttribute("color",`${tempcard.color}`);
     newDiv.setAttribute("number",`${String(tempcard.number)}`);
     target.replaceWith(newDiv);
@@ -485,13 +481,11 @@ function dragDrop(e)
     updateHand(handPlayer0);
 }
 
-
+////////////////////done function///////////////////////
 function done(){
     verifyTurn();
 
 }
-
-
 /////////////exit///////////////
 function exit(){
     $("#game").css("visibility","hidden")
